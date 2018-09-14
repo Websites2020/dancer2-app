@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CSS Template</title>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+                <style>
+                    * {
+                        box-sizing: border-box;
+                    }
+                
+                body {
+                    font-family: Arial, Helvetica, sans-serif;
+                }
+                
+                /* Style the header */
+                header {
+                    background-color: #666;
+                    padding: 30px;
+                    text-align: center;
+                    font-size: 35px;
+                    color: white;
+                }
+                
+                /* Create two columns/boxes that floats next to each other */
+                nav {
+                    float: left;
+                    width: 30%;
+                    height: 300px; /* only for demonstration, should be removed */
+                    background: #ccc;
+                    padding: 20px;
+                }
+                
+                /* Style the list inside the menu */
+                nav ul {
+                    list-style-type: none;
+                    padding: 0;
+                }
+                
+                article {
+                    float: left;
+                    padding: 20px;
+                    width: 70%;
+                    background-color: #f1f1f1;
+                    height: 300px; /* only for demonstration, should be removed */
+                }
+                
+                /* Clear floats after the columns */
+                section:after {
+                    content: "";
+                    display: table;
+                    clear: both;
+                }
+                
+                /* Style the footer */
+                footer {
+                    background-color: #777;
+                    padding: 10px;
+                    text-align: center;
+                    color: white;
+                }
+                
+                /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+                @media (max-width: 600px) {
+                    nav, article {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+                
+                body {font-family: Arial;}
+                
+                /* Style the tab */
+                .tab {
+                    overflow: hidden;
+                    border: 1px solid #ccc;
+                    
+                }
+                
+                /* Style the buttons inside the tab */
+                .tab button {
+                    background-color: inherit;
+                    
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    padding: 14px 16px;
+                    transition: 0.3s;
+                    font-size: 17px;
+                }
+                
+                /* Change background color of buttons on hover */
+                .tab button:hover {
+                    background-color: #ddd;
+                }
+                
+                /* Create an active/current tablink class */
+                .tab button.active {
+                    background-color: #ccc;
+                }
+                
+                /* Style the tab content */
+                .tabcontent {
+                    display: none;
+                    padding: 6px 12px;
+                    -webkit-animation: fadeEffect 1s;
+                    animation: fadeEffect 1s;
+                }
+                
+                /* Fade in tabs */
+                @-webkit-keyframes fadeEffect {
+                    from {opacity: 0;}
+                    to {opacity: 1;}
+                }
+                
+                @keyframes fadeEffect {
+                    from {opacity: 0;}
+                    to {opacity: 1;}
+                }
+                
+                </style>
+    </head>
+    <body>
+        
+        <header>
+            <h2>Cities</h2>
+        </header>
+        
+        <section>
+            <nav>
+                <ul>
+                    <div class="tab">
+                        <li><button class="tablinks" onclick="openCity(event, 'London')">London</button></li>
+                        <li><button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button></li>
+                        <li><button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button></li>
+                    </div>
+                </ul>
+            </nav>
+            
+            <article>
+                
+                <div id="London" class="tabcontent">
+                    <h1>London</h1>
+                    <p>London is the capital city of England. It is the most populous city in the  United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
+                    <p>Standing on the River Thames, London has been a major settlement for two millennia, its history going back to its founding by the Romans, who named it Londinium.</p>
+                </div>
+                
+                <div id="Paris" class="tabcontent">
+                    <h1>Paris</h1>
+                    <p>Paris is the capital of France.</p>
+                </div>
+                
+                <div id="Tokyo" class="tabcontent">
+                    <h1>Tokyo</h1>
+                    <p>Tokyo is the capital of Japan.</p>
+                </div>
+            </article>
+        </section>
+        
+        <footer>
+            <p>Footer</p>
+        </footer>
+        
+        <script>
+            function openCity(evt, cityName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(cityName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+        </script>
+        
+    </body>
+</html>
+
+
